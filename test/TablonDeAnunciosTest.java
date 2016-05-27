@@ -119,5 +119,24 @@ public class TablonDeAnunciosTest {
 		
 	}
 	
+	@Test
+	
+	public void test7(){
+		Anuncio anuncio = new Anuncio("antonio", "martos", "LA EMPRESA");
+		Anuncio anuncio2 = new Anuncio("antonio", "molina", "LA EMPRESA");
+		
+		IBaseDeDatosDeAnunciantes bd = mock(IBaseDeDatosDeAnunciantes.class);
+		IBaseDeDatosDePagos bp = mock(IBaseDeDatosDePagos.class);
+		
+		
+		
+		tablon.publicarAnuncio(anuncio, bd, bp);
+		assertEquals(2, tablon.anunciosPublicados());
+		
+		tablon.publicarAnuncio(anuncio, bd, bp);
+		
+		
+	}
+	
 
 }
