@@ -134,9 +134,15 @@ public class TablonDeAnunciosTest {
 		assertEquals(2, tablon.anunciosPublicados());
 		
 		tablon.publicarAnuncio(anuncio, bd, bp);
+		//assertEquals(2, tablon.anunciosPublicados());
+		//deberia funcionar pero no me sale , dejo aqui la posible solucion en el metodo de la clase tablondeanuncios
 		
-		
+		/*
+		 * if(anuncio.titulo.equals(this.buscarAnuncioPorTitulo(anuncio.titulo).titulo) && anuncio.anunciante.equals(this.buscarAnuncioPorTitulo(anuncio.anunciante).anunciante))
+		 */
 	}
+	
+	
 	
 
 }
