@@ -84,5 +84,22 @@ public class TablonDeAnunciosTest {
 		assertEquals(2, tablon.anunciosPublicados());
 	}
 	
+	@Test
+	
+	public void test5(){
+		
+		Anuncio anuncio = new Anuncio("antonio", "martos", "LA EMPRESA");
+		Anuncio anuncio2 = new Anuncio("felipe", "molina", "LA EMPRESA");
+		
+		IBaseDeDatosDeAnunciantes bd = mock(IBaseDeDatosDeAnunciantes.class);
+		IBaseDeDatosDePagos bp = mock(IBaseDeDatosDePagos.class);
+		
+		tablon.publicarAnuncio(anuncio, bd, bp);
+		tablon.publicarAnuncio(anuncio2, bd, bp);
+		
+		assertEquals(anuncio2, tablon.buscarAnuncioPorTitulo(anuncio2.titulo_));
+		assertEquals(3, tablon.anunciosPublicados());
+	}
+	
 
 }
