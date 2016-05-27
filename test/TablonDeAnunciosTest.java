@@ -57,15 +57,31 @@ public class TablonDeAnunciosTest {
 		
 		
 		Anuncio anuncio = new Anuncio("hola", "prueba", "OTRA EMPRESA");
-		IBaseDeDatosDeAnunciantes bdAnunciantes = mock(IBaseDeDatosDeAnunciantes.class);
-		IBaseDeDatosDePagos bdPagos = mock(IBaseDeDatosDePagos.class);
+		IBaseDeDatosDeAnunciantes bd = mock(IBaseDeDatosDeAnunciantes.class);
+		IBaseDeDatosDePagos bp = mock(IBaseDeDatosDePagos.class);
 		
-		when(bdAnunciantes.buscarAnunciante("OTRA EMPRESA")).thenReturn(true);
-		when(bdPagos.anuncianteTieneSaldo("OTRA EMPRESA")).thenReturn(false);
-		tablon.publicarAnuncio(anuncio, bdAnunciantes, bdPagos);
+		when(bd.buscarAnunciante("OTRA EMPRESA")).thenReturn(true);
+		when(bp.anuncianteTieneSaldo("OTRA EMPRESA")).thenReturn(false);
+		tablon.publicarAnuncio(anuncio, bd, bp);
 		
 		assertEquals(1, tablon.anunciosPublicados());
 		
+	}
+	
+	@Test
+	
+	public void test4(){
+		
+		
+		IBaseDeDatosDeAnunciantes bd = mock(IBaseDeDatosDeAnunciantes.class);
+		IBaseDeDatosDePagos bp = mock(IBaseDeDatosDePagos.class);
+		Anuncio anuncio = new Anuncio("holaa", "prueba", "OTRA EMPRESA");
+		
+		when(bd.buscarAnunciante(anuncio.anunciante_)).thenReturn(true);
+		when(bp.anuncianteTieneSaldo(anuncio.anunciante_)).thenReturn(true);
+		
+		tablon.publicarAnuncio(anuncio, bd, bp);
+		assertEquals(2, tablon.anunciosPublicados());
 	}
 	
 
