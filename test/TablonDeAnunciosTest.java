@@ -50,5 +50,23 @@ public class TablonDeAnunciosTest {
 		
 		//sin yo meterle ningun anuncio ya tenemos 1 publicado..
 	}
+	
+	@Test 
+	
+	public void test3(){
+		
+		
+		Anuncio anuncio = new Anuncio("hola", "prueba", "OTRA EMPRESA");
+		IBaseDeDatosDeAnunciantes bdAnunciantes = mock(IBaseDeDatosDeAnunciantes.class);
+		IBaseDeDatosDePagos bdPagos = mock(IBaseDeDatosDePagos.class);
+		
+		when(bdAnunciantes.buscarAnunciante("OTRA EMPRESA")).thenReturn(true);
+		when(bdPagos.anuncianteTieneSaldo("OTRA EMPRESA")).thenReturn(false);
+		tablon.publicarAnuncio(anuncio, bdAnunciantes, bdPagos);
+		
+		assertEquals(1, tablon.anunciosPublicados());
+		
+	}
+	
 
 }
